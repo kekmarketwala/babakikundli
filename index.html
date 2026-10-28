@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meri Free Kundli Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f9; padding: 20px; }
+        .card { background: white; max-width: 400px; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        input, button { width: 90%; padding: 10px; margin: 8px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background-color: #ff6600; color: white; border: none; font-weight: bold; cursor: pointer; }
+        button:hover { background-color: #e65c00; }
+        #result { margin-top: 20px; font-weight: bold; text-align: left; background: #fff8f0; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Free Kundli Generator</h2>
+        <input type="text" id="name" placeholder="Apna Naam Likhein">
+        <input type="date" id="dob">
+        <input type="time" id="tob">
+        <input type="text" id="place" placeholder="Janam Ka Sthan (e.g. Delhi)">
+        <button onclick="getKundli()">Kundli Banayein</button>
+
+        <div id="result">Kundli details yahan dikhengi...</div>
+    </div>
+
+    <script>
+        async function getKundli() {
+            const name = document.getElementById('name').value;
+            const dob = document.getElementById('dob').value;
+            const tob = document.getElementById('tob').value;
+            const resultDiv = document.getElementById('result');
+
+            if(!name || !dob || !tob) {
+                alert("Kripya sabhi details bharein!");
+                return;
+            }
+
+            resultDiv.innerHTML = "Kundli Fetch Ho Rahi Hai... Please Wait.";
+
+            /* NOTE: Baad me jab API connect karni ho, tab fetch call yahan aayegi */
+            setTimeout(() => {
+                resultDiv.innerHTML = `
+                    <h3>Namaste ${name}!</h3>
+                    <p><b>Birth Date:</b> ${dob}</p>
+                    <p><b>Birth Time:</b> ${tob}</p>
+                    <p><b>Rashi:</b> Mesh (Sample Output)</p>
+                    <p><b>Nakshatra:</b> Ashwini (Sample Output)</p>
+                `;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
